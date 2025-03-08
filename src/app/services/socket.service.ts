@@ -13,7 +13,11 @@ export class SocketService {
   test = ""; 
 
   constructor() {
-    this.socket = io('https://firo-be-jstn2004s-projects.vercel.app/');
+    this.socket = io('https://firo-be-jstn2004s-projects.vercel.app', {
+      transports: ['websocket'],  // Sicherstellen, dass WebSocket verwendet wird
+      secure: true,                // Absicherung der Verbindung
+    });
+    
     this.socket.on('connect', () => {
       console.log('Verbunden mit Server:', this.socket.id);
     });
