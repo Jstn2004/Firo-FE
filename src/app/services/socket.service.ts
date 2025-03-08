@@ -13,7 +13,7 @@ export class SocketService {
   test = ""; 
 
   constructor() {
-    this.socket = io('http://localhost:3000');
+    this.socket = io('https://firo-be-jstn2004s-projects.vercel.app/');
     this.socket.on('connect', () => {
       console.log('Verbunden mit Server:', this.socket.id);
     });
