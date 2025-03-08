@@ -1,0 +1,68 @@
+
+<div class="dropdown-style">
+  <span class="image"></span>
+  <span>Firo</span>
+</div>
+
+<div id="room-details-container">
+<div id="room-details">
+  <div id="room-connection">
+    <span>Teilnehmer:</span>
+    <span class="value">{{members.length}}</span>
+  </div>
+  <div id="room-id">
+    <span>Raum-ID:</span>
+    <span class="value">{{roomId}}</span>
+  </div>
+  <div id="room-password">
+    <span>Password:</span>
+    <span class="value">{{password}}</span>
+  </div>
+</div>
+<div id="room-leave">
+  <button (click)="leave()">Leave</button>
+</div>
+</div>
+
+<div id="whiteboard-container">
+  <div id="whiteboard">
+    <div id="left-container">
+      <div id="tool-box">
+        <p class="description">Pick a Color:</p>
+        <div id="color-palette">
+          <button *ngFor="let color of colors" 
+                  class="color-button" 
+                  [style.background-color]="color" 
+                  (click)="changeColor(color)">
+          </button>
+
+        </div>
+        <p class="description">Brush Size: <span>{{brushwidth}}</span></p>
+        <input type="range" min="1" max="15" value="5" id="slider" [(ngModel)]="brushwidth" (ngModelChange)="changeBrushSize(brushwidth)">
+        <button id="clearButton" (click)="clearCanvas()">Clear</button>
+
+      </div>
+    
+      
+    </div>
+    <canvas #canvas id="canvas" >
+    </canvas>
+  </div>
+</div>
+
+<div *ngIf="showForm">
+<div id="room-infos">
+  <div *ngIf="showForm">
+    <div id="form-container">
+      <label for="roomId">Raum-ID:</label>
+      <input type="text" id="roomId" [(ngModel)]="roomId" placeholder="Raum-ID" maxlength="4">
+      <label for="password">Passwort (optional):</label>
+      <input type="password" id="password"  placeholder="Passwort">
+      <div id="button-container">
+        <button (click)="joinRoom()">Join</button>
+        <button (click)="createRoom()">Create</button>
+      </div>
+  </div>
+</div>
+</div>
+</div>

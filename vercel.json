@@ -1,0 +1,12 @@
+{
+    "routes": [
+      {
+        "src": "^/\\_vercel/.*$",
+        "dest": "dist/whiteboard/\\_vercel/$1"
+      },
+      {
+        "src": "^/(?!\\.(png|jpg|gif|svg|ico|js|css)$)(.*)$",
+        "dest": "dist/whiteboard/index.html"
+      }
+    ]
+  }
